@@ -39,7 +39,7 @@ SettingsMainView::SettingsMainView( BRect bounds )
 
 void SettingsMainView::AttachedToWindow() {
 
-	// Fontsensitivität...	
+	// Font Sensivity...	
 	BFont	font(be_plain_font);
 	float divider = font.StringWidth("Synthesizer patches") + 8;
 
@@ -206,7 +206,7 @@ void SettingsMainView::AttachedToWindow() {
 	checkbox->SetValue( prefs.fShowReplicant );
 	AddChild( checkbox );
 	
-	// Für nachfolgendes Draw()
+	// Four subsequent Draw()
 	font.SetFamilyAndStyle("Swis721 BT", "Roman");
 	font.SetSize(9);
 	font.SetRotation(90.0);

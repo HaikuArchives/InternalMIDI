@@ -99,14 +99,14 @@ bool InternalMidi::LoadFromPrefs() {
 	statuswindow->AddChild( statusview );
 	statuswindow->Show();
 
-	// Synthesizer verfügbar?
+	// Synthesizer available?
 	BPath	path	= prefs.fSynthDirectory;
 	path.SetTo( path.Path(), prefs.fSynthFile.String() );
 	
 	entry_ref	ref;
 	get_ref_for_path(path.Path(), &ref);
 	
-	// Sounds laden und restliche Einstellungen übernehmen
+	// Load sounds and incorporate the remaining settings
 	be_synth->Pause();
 	bool loaded = be_synth->LoadSynthData(&ref) == B_OK && be_synth->IsLoaded();
 

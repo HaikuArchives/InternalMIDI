@@ -65,7 +65,7 @@ SettingsWindow::SettingsWindow()
 			break;
 	}
 
-	// Menü
+	// Menu
 	BMenuBar	*menuBar;
 	BMenu		*menu;
 	BMenuItem	*menuItem;
@@ -94,7 +94,7 @@ SettingsWindow::SettingsWindow()
 
 	AddChild( menuBar );
 	
-	// Fontsensitivität...	
+	// Font sensivity...	
 	BFont	font(be_plain_font);
 	float min_width = font.StringWidth("2 point interpolationSynthesizer patches") + 60;
 
@@ -137,7 +137,7 @@ bool SettingsWindow::QuitRequested() {
 
 	Hide();
 
-	// MessageRunner von Signal & Scope View entfernen
+	// MessageRunner of Signal & Scope View remove
 	SignalView *signalview = (SignalView *)FindView("signalview");
 	if (signalview->fMessageRunner) {
 		delete signalview->fMessageRunner;
@@ -154,7 +154,7 @@ bool SettingsWindow::QuitRequested() {
 
 void SettingsWindow::Show() {
 
-	// Fensterposition anpassen
+	// Adjust window position
 	BScreen screen;
 	
 	float new_left = Frame().left, new_top = Frame().top;
@@ -167,7 +167,7 @@ void SettingsWindow::Show() {
 	
 	if (Frame().LeftTop() != BPoint( new_left, new_top ) ) MoveTo( new_left, new_top );
 	
-	// Replicanten überprüfen
+	// Replicant check
 	BDeskbar deskbar;
 	bool has = deskbar.HasItem(VIEW_NAME);
 	if (has != prefs.fShowReplicant ) {
@@ -175,7 +175,7 @@ void SettingsWindow::Show() {
 		else DeskbarView::RemoveFromDeskbar();
 	}
 
-	// signal und scope view brauchen MessageRunner
+	// Signal scope and need to view Message Runner
 	SignalView *signalview = (SignalView *)FindView("signalview");
 	if (!signalview->fMessageRunner)
 		signalview->fMessageRunner = new BMessageRunner( signalview, new BMessage('Draw'), 50000 );
@@ -183,6 +183,6 @@ void SettingsWindow::Show() {
 	if (!scope->fMessageRunner)
 		scope->fMessageRunner = new BMessageRunner( scope, new BMessage('Draw'), 50000 );
 
-	// Fenster anzeigen
+	// Show window
 	BWindow::Show();
 }

@@ -51,7 +51,8 @@ DeskbarView::DeskbarView(BMessage *archive)
 
 	Init();
 	
-	// Falls die Application nicht läuft, sich selbst beenden
+	// If the application is not running terminate the replicant
+	// terminate itself
 	if (!be_roster->IsRunning( APP_SIGNATURE ) ) {
 		RemoveFromDeskbar();
 	}
@@ -97,7 +98,7 @@ void DeskbarView::MouseDown( BPoint where ) {
 	int32	clicks = 0;
 	msg->FindInt32("clicks", &clicks );
 
-	// Falls MessageRunner läuft, beenden
+	// Message runner end
 	delete fMessageRunner;
 	fMessageRunner = 0;
 
@@ -114,14 +115,14 @@ void DeskbarView::MouseDown( BPoint where ) {
 
 void DeskbarView::MouseMoved(BPoint pt, uint32 c, const BMessage *m) {
 
-	// Falls MessageRunner läuft, beenden
+	// Message runner end
 	delete fMessageRunner;
 	fMessageRunner = 0;
 	
-	// Hauptprogramm noch vorhanden? Falls nein, sich selbst beenden
+	// Main program still exist? If not quit.
 	if (!be_roster->IsRunning( APP_SIGNATURE )) RemoveFromDeskbar();
 	
-	// Ansonten normal weitermachen
+	// Continue normal move
 	BView::MouseMoved(pt, c, m);
 
 }
@@ -181,7 +182,7 @@ status_t DeskbarView::Archive(BMessage *archive, bool deep) const
 
 void DeskbarView::MessageReceived(BMessage *message) {
 
-	// Messenger finden
+	// Messenger find
 	delete fMyAppMessenger;
 	fMyAppMessenger = new BMessenger( APP_SIGNATURE );
 

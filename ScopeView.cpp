@@ -89,7 +89,7 @@ ScopeView::~ScopeView() {
 
 void ScopeView::UpdateView() {
 
-	// Initialisieren
+	// Initialize
 	int32	size = Bounds().Height() - 1; // muss immer quadratisch sein!
 
 	float		value;
@@ -99,7 +99,7 @@ void ScopeView::UpdateView() {
 	static int16	pLeft[MAX_SAMPLES], pRight[MAX_SAMPLES];
 	be_synth->GetAudio(pLeft, pRight, MAX_SAMPLES );
 
-	// Farbe
+	// Color
 	static int			farb_nr;
 	static rgb_color	color = { 0, 0, 0, 64 };
 	
@@ -110,13 +110,13 @@ void ScopeView::UpdateView() {
 	color.green	= (int)(sin((farb_nr + 85)	* faktor) * 75 + 180);
 	color.blue	= (int)(sin((farb_nr + 170)	* faktor) * 75 + 180);
 
-	// Zeichnen	
+	// Draw
 	fBgBitmap->Lock();
 
 	fBgView->SetHighColor( 0, 0, 0, 10 );
 	fBgView->FillRect( fBgView->Bounds() );
 
-	// Effekt zeichnen
+	// Paint effect
 	switch (fEffectNr) {
 
 		case 0: {

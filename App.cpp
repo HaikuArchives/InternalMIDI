@@ -59,7 +59,7 @@ void App::MessageReceived(BMessage *message) {
 
 	switch( message->what ) {
 	
-		// --- Allgemein -----------------------------------------------
+		// --- Common -----------------------------------------------
 
 		case B_SILENT_RELAUNCH:
 		case 'Sett': {
@@ -156,14 +156,12 @@ void App::MessageReceived(BMessage *message) {
 void App::AboutRequested() {
 	(new BAlert("About InternalMIDI", 
 		"\nInternalMIDI V2.5.3\n\n"
-		"Copyright ©2001 by Werner Freytag\n\n"
-		"InternalMIDI creates a MIDI node for the internal BeOS General MIDI synthesizer.\n\n"
+		"Copyright ©2001 by Werner Freytag\n\n
+		"Copyright ©2009/2010 Haiku Inc. \n\n"
+		"InternalMIDI creates a MIDI node for the internal Haiku General MIDI synthesizer.\n\n"
 		"Use a utility like PatchBay to connect it to your MIDI applications!\n\n"
-		"InternalMIDI is freeware. It may be added to other software without permission - althought "
-		"it would be nice, if you inform me! :-)\n\n"
-		"e-mail:	werner@pecora.de\n"
-		"homepage:	http://www.pecora.de",
-		"Ok, thank you!"))->Go();
+		"InternalMIDI is released under the Haiku license."
+		"homepage:	http://dev.osdrawer.net/projects/internalmidi"))->Go();
 }
 
 App::~App() {

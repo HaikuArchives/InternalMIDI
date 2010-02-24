@@ -14,7 +14,7 @@
 #include <Application.h>
 #include <Path.h>
 
-#define APP_SIGNATURE "application/x-vnd.pecora-internal_midi"
+#define APP_SIGNATURE "application/x-vnd.haiku-internal_midi"
 
 class InternalMidi;
 class SettingsWindow;

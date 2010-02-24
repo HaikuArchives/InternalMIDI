@@ -26,14 +26,14 @@ Prefs prefs;
 Prefs::Prefs()
 {
 
-	// Pfade initialisieren
+	// Initialize paths
 	find_directory(B_SYNTH_DIRECTORY, &fSynthDirectory );
 	fSynthDirectory.SetTo( fSynthDirectory.Path(), "synth" );
 
 	find_directory(B_USER_SETTINGS_DIRECTORY, &fSavePath);
 	fSavePath.SetTo( fSavePath.Path(), PREFS_FILENAME );
 	
-	// --- Einstellungen vornehmen
+	// Initialize settings file object
 	BMessage	message;
 	BFile		file( fSavePath.Path(), B_READ_ONLY );
 	
@@ -43,7 +43,7 @@ Prefs::Prefs()
 	if (message.FindBool("pause", &fPause ) != B_OK )
 		fPause = false;
 
-	// --- SynthFile (default: erste gefundene )
+	// --- SynthFile (default: First found )
 	if (message.FindString("synthfile", &fSynthFile ) != B_OK ) {
 		entry_ref	ref;
 
