@@ -120,7 +120,7 @@ void ScopeView::UpdateView() {
 	switch (fEffectNr) {
 
 		case 0: {
-			static BPoint	*ptArray[ MAX_SAMPLES ];
+//			static BPoint	*ptArray[ MAX_SAMPLES ];
 			for (int32 i = 0; i<MAX_SAMPLES; ++i) {
 		
 				pos = ((float)i / MAX_SAMPLES * 4 * M_PI);

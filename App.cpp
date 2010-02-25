@@ -156,12 +156,13 @@ void App::MessageReceived(BMessage *message) {
 void App::AboutRequested() {
 	(new BAlert("About InternalMIDI", 
 		"\nInternalMIDI V2.5.3\n\n"
-		"Copyright ©2001 by Werner Freytag\n\n
-		"Copyright ©2009/2010 Haiku Inc. \n\n"
-		"InternalMIDI creates a MIDI node for the internal Haiku General MIDI synthesizer.\n\n"
+		"Copyright ©2001 by Werner Freytag\n\n"
+//		"Copyright ©2009/2010 Haiku Inc. \n\n"
+		"InternalMIDI creates a MIDI node for the internal Haiku General MIDI synthesizer.\n"
 		"Use a utility like PatchBay to connect it to your MIDI applications!\n\n"
-		"InternalMIDI is released under the Haiku license."
-		"homepage:	http://dev.osdrawer.net/projects/internalmidi"))->Go();
+		"InternalMIDI is released under MIT license.\n\n"
+		"Project Homepage:\nhttp://dev.osdrawer.net/projects/internalmidi\n", "OK", NULL, NULL, 
+		B_WIDTH_FROM_WIDEST, B_EVEN_SPACING, B_INFO_ALERT))->Go();
 }
 
 App::~App() {
