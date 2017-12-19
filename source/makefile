@@ -36,7 +36,7 @@ SRCS= 	App.cpp Prefs.cpp SettingsMainView.cpp \
 
 #	specify the resource files to use
 #	full path or a relative path to the resource file can be used.
-RSRCS= FileInfo.rsrc
+RDEFS= FileInfo.rdef
 
 # @<-src@ 
 #%}
@@ -53,7 +53,7 @@ RSRCS= FileInfo.rsrc
 #		naming scheme you need to specify the path to the library
 #		and it's name
 #		library: my_lib.a entry: my_lib.a or path/my_lib.a
-LIBS= midi midi2 media be stdc++.r4
+LIBS= be media midi midi2 $(STDCPPLIBS)
 
 #	specify additional paths to directories following the standard
 #	libXXX.so or libXXX.a naming scheme.  You can specify full paths
@@ -61,12 +61,12 @@ LIBS= midi midi2 media be stdc++.r4
 #	be recursive, so include all of the paths where libraries can
 #	be found.  Directories where source files are found are
 #	automatically included.
-LIBPATHS= /boot/system/lib
+LIBPATHS= 
 
 #	additional paths to look for system headers
 #	thes use the form: #include <header>
 #	source file directories are NOT auto-included here
-SYSTEM_INCLUDE_PATHS = /boot/develop/headers/be/midi2 /boot/develop/headers/be/media
+SYSTEM_INCLUDE_PATHS = 
 
 #	additional paths to look for local headers
 #	thes use the form: #include "header"
@@ -111,6 +111,7 @@ LINKER_FLAGS =
 #	This may also be specified in a resource.
 APP_VERSION = 
 
-## include the makefile-engine
-include $(BUILDHOME)/etc/makefile-engine
-
+## Include the Makefile-Engine
+DEVEL_DIRECTORY := \
+	$(shell findpaths -r "makefile_engine" B_FIND_PATH_DEVELOP_DIRECTORY)
+include $(DEVEL_DIRECTORY)/etc/makefile-engine
