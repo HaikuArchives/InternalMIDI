@@ -1,0 +1,162 @@
+<html>
+<head>
+<title>InternalMIDI documentation</title>
+</head>
+<body bgcolor="#eeeeee" link="#284696" vlink="#555555">
+<table cellspacing=3 cellpadding=1 border=0 bgcolor="#ffffff" width=100%>
+<tr><td>
+<table cellpadding=0 cellspacing=0 border=0 width=100%><tr>
+	<td width=5><img src="gfx/icon.gif" align="left" hspace=5 vspace=5></td>
+	<td><i><font face="Dutch801 Rm BT" size=+4>InternalMIDI</font></i></td>
+	<td><img src="gfx/pecora.gif" align=right></td>
+</tr></table>
+</td></tr>
+<tr><td bgcolor="#284696"><img src="gfx/pixel.gif" height=1></td></tr>
+<tr><td><font face="Arial,Helvetica">
+
+<h1>Introduction</h1>
+<p>
+InternalMIDI creates a MIDI node for the internal General MIDI synthesizer of the BeOS.
+<br><br>
+You can connect it to every BeOS MIDI program that supports the Midi2 Kit. With a nice panel you can change all the settings that the internal BeOS synthesizer accepts: Sound quality, different patches, pause, volume, reverb, and transposition.
+<br>
+
+<h1>License</h1>
+<p>
+InternalMIDI is freeware. You may share InternalMIDI with as many people as you like, as long as the program is distributed with all parts, especially this documentation, intact. InternalMIDI may not be sold. You may freely distribute InternalMIDI together with your own software WITHOUT the authors permisson - although I would be glad to <a href="mailto:info@pecora.de">hear from you</a>!
+<br>
+<br>All graphics, especially the icon or brands are copyrighted by the author and may not be used in any form without the author's consent.
+
+<h1>Exclusion of liability</h1>
+<p>
+Great care was taken to make sure InternalMIDI functions flawlessly and without fault.
+Nevertheless there is still a slim chance that errors may still occur.
+<br>The author will not be held liable for any potential damage caused by this software nor will he guarantee any unique (or special) functions.
+
+<h1>Usage of the program</h1>
+<p>
+<img src="gfx/screenshot_2.gif" width="266" height="470" border="1" alt="Screenshot" align="right">
+After starting InternalMIDI a small icon appears in the Deskbar.
+
+Now you can use your MIDI software or a utility like PatchBay (by Be Inc.) to connect a MIDI input device to InternalMIDI. InternalMIDI will play every MIDI code it receives through the builtin software synthesizer.
+<br>
+<br>
+<h3>Settings</h3>
+When you right click on the Deskbar icon, a popup menu appears with the items: <i>Settings</i>, <i>About</i> and <i>Quit</i>. When you either select <i>Settings</i> from the popup menu or double-click onto the icon or click your middle mouse button, the settings window will be opened.
+<br><br>
+The settings should be self-describing.
+<br><br>
+But nevertheless I've got some hints for you:
+<ul>
+<li>The sliders are acting real-time as far as possible which means that you can modify the sound <i>while dragging</i> the knob.</li>
+<li>When you click the right mouse button over the sliders they are set to predefined values.</li>
+</ul>
+<h1>Remote control</h1>
+<p>
+If you want to use InternalMIDI from your own program, here are some informations for you, how you can remote control it.
+
+<br>
+<h3>Getting started</h3>
+Just write in your program:
+<pre><tt>
+	#include &lt;Roster.h&gt;
+
+	#define INTERNALMIDI_SIGNATURE &quot;application/x-vnd.pecora-internal_midi&quot;
+
+	 ...
+
+	if ( !be_roster->IsRunning( INTERNALMIDI_SIGNATURE ) ) {
+		if ( be_roster->Launch( INTERNALMIDI_SIGNATURE ) != B_OK ) {
+
+			/* some error handling */
+
+		}
+	}
+
+</tt> </pre>
+<i><b>Hint:</b> If you want to connect to InternalMIDI immediately after starting it, you must have a little bit patience: It can take some seconds before it is running!</i>
+
+<h3>Open the Settings Window</h3>
+
+The following code opens the Settings Window:
+<pre><tt>
+	BMessage	msg('Sett');
+	BMessenger( INTERNALMIDI_SIGNATURE ).SendMessage( &msg );
+</tt> </pre>
+There is currently no possibility to close the Settings Window remotely.
+
+<h3>Hide / show the Deskbar replicant</h3>
+
+Hiding and showing the Deskbar replicant is almost as easy:
+<pre><tt>
+	BMessage	msg('Repl');
+	msg.AddInt32( "be:value", 1 );
+	BMessenger( INTERNALMIDI_SIGNATURE ).SendMessage( &msg );
+</tt> </pre>
+The text above <b>shows</b> the Deskbar replicant. If you want to hide it, set the value from 1 to 0:
+
+<pre><tt>
+	...
+	msg.AddInt32( "be:value", 0 );
+	...
+</tt></pre>
+You can also leave the whole line away, but this is not guaranteed to work in the future!
+
+<h3>Even more features...?</h3>
+
+If you want to change more settings remotely, please <a href="#Autor">contact me</a>!
+
+<h1>History</h1>
+<p>
+<ul>
+For details see the BRoster documentation!
+<li><b>July 26rd, 2001:</b> V 2.5.3: Added another view which shows the incoming &quot;Note On&quot; signals
+<li><b>May 21th, 2001:</b> V 2.5.2: We are getting better everyday... :-) IM shouldn't crash anymore when changing patches while working heavy...
+<li><b>May 19th, 2001:</b> V 2.5.1: Now we are font-sensitive. Also added minor improvements.
+<li><b>May 13th, 2001:</b> V 2.5: Added a lot of new features:
+	<ul>
+	<li>You can now hide the Deskbar replicant
+	<li>The settings are (automatically) saved and restored when starting InternalMIDI again
+	<li>Added a pretty scope view (click on it to change it's look!)
+	</ul>
+<li><b>May 9th, 2001:</b> V 2.02: removed another bug which crashed IM under BeOS 5.01 - not under 5.03 where I tested it... This one almost made me crazy! Thanks to Martijn Sipkema for his hint!
+<li><b>May 5th, 2001:</b> V 2.01: removed a small bug
+<li><b>May 5th, 2001:</b> V 2.0 released: Added the settings window
+<li><b>April 28th, 2001:</b> Initial release
+</ul>
+
+<h1>Future</h1>
+<p>
+There will be some smaller updates for this release. InternalMIDI will be used in a bigger MIDI project I'm currently developing, called PecoBeat. Just <a href="http://www.pecora.de/pecobeat" target="_blank">have a look at it</a>!
+
+<a name="Autor"></a>
+<h2>Author / contact</h2>
+<p>
+I hope you like the program and you can benefit from it. I'm looking forward your ideas, suggestions or criticism!
+<p>
+And please vote for it at <a href="http://www.bebits.com/app/2201">BeBits</a>!
+<p>
+
+Here you can contact me:
+
+<center>
+<table cellpadding=10 cellspacing=0 border=0 bgcolor="#eeeeee">
+<tr>
+	<td valign=top><font face="Arial,Helvetica">Werner Freytag</td></tr>
+<tr>
+	<td valign=top><font face="Arial,Helvetica">Neurieder Str. 8
+				<br>82152 Martinsried
+				<br>Germany</td>
+</tr>
+<tr>
+	<td valign=top><font face="Arial,Helvetica"><a href="mailto:info@pecora.de">info@pecora.de</a>
+	<br><a href="http://www.pecora.de" target="_blank">http://www.pecora.de</a></td>
+</tr>
+</table>
+</center>
+</font>
+</td>
+</tr>
+</table>
+</body>
+</html>
