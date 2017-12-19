@@ -64,7 +64,7 @@ DeskbarView::DeskbarView(BMessage *archive)
 	BFile			file(&ref, B_READ_WRITE);
 	BAppFileInfo	appFileInfo(&file);
 	
-	fIcon = new BBitmap(BRect(0,0,15,15), B_CMAP8 );
+	fIcon = new BBitmap(BRect(0,0,15,15), B_RGBA32 );
 	appFileInfo.GetIcon(fIcon, B_MINI_ICON);
 	
 }
