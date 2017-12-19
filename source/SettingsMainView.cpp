@@ -50,7 +50,7 @@ void SettingsMainView::AttachedToWindow() {
 	BFile			file(&ref, B_READ_WRITE);
 	BAppFileInfo	appFileInfo(&file);
 	
-	fIcon = new BBitmap(BRect(0,0,31,31), B_CMAP8 );
+	fIcon = new BBitmap(BRect(0,0,31,31), B_RGBA32 );
 	appFileInfo.GetIcon(fIcon, B_LARGE_ICON);
 
 	SetViewColor( ui_color( B_PANEL_BACKGROUND_COLOR ) );	
