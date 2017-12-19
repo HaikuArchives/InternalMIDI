@@ -16,6 +16,7 @@
 #include <Entry.h>
 #include <MenuField.h>
 #include <MenuItem.h>
+#include <NodeInfo.h>
 #include <Path.h>
 #include <PopUpMenu.h>
 #include <Roster.h>
@@ -46,12 +47,9 @@ void SettingsMainView::AttachedToWindow() {
 	// Icon
 	entry_ref ref;
 	be_roster->FindApp( APP_SIGNATURE, &ref);
-
-	BFile			file(&ref, B_READ_WRITE);
-	BAppFileInfo	appFileInfo(&file);
 	
 	fIcon = new BBitmap(BRect(0,0,31,31), B_RGBA32 );
-	appFileInfo.GetIcon(fIcon, B_LARGE_ICON);
+	BNodeInfo::GetTrackerIcon(&ref, fIcon, B_LARGE_ICON);
 
 	SetViewColor( ui_color( B_PANEL_BACKGROUND_COLOR ) );	
 	SetLowColor( ui_color( B_PANEL_BACKGROUND_COLOR ) );	

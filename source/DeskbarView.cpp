@@ -60,12 +60,9 @@ DeskbarView::DeskbarView(BMessage *archive)
 	// Icon
 	entry_ref ref;
 	be_roster->FindApp( APP_SIGNATURE, &ref);
-
-	BFile			file(&ref, B_READ_WRITE);
-	BAppFileInfo	appFileInfo(&file);
 	
 	fIcon = new BBitmap(BRect(0,0,15,15), B_RGBA32 );
-	appFileInfo.GetIcon(fIcon, B_MINI_ICON);
+	BNodeInfo::GetTrackerIcon(&ref, fIcon, B_MINI_ICON);
 	
 }
 
