@@ -1,16 +1,13 @@
-## _InternalMidi_
 ![](https://github.com/HaikuArchives/InternalMIDI/raw/master/documentation/gfx/icon.gif)
-![](https://github.com/HaikuArchives/InternalMIDI/raw/master/documentation/gfx/pecora.gif)
-
-![](https://github.com/HaikuArchives/InternalMIDI/raw/master/documentation/gfx/pixel.gif)
+## _InternalMidi_
 
 # Introduction
-InternalMIDI creates a MIDI node for the internal General MIDI synthesizer of the BeOS.
+InternalMIDI creates a MIDI node for the internal General MIDI synthesizer of the BeOS/Haiku.
 
-You can connect it to every BeOS MIDI program that supports the Midi2 Kit. With a nice panel you can change all the settings that the internal BeOS synthesizer accepts: Sound quality, different patches, pause, volume, reverb, and transposition.
+You can connect it to every BeOS/Haiku MIDI program that supports the Midi2 Kit. With a nice panel you can change all the settings that the internal BeOS/Haiku synthesizer accepts: Sound quality, different patches, pause, volume, reverb, and transposition.
 
 # License
-InternalMIDI is freeware. You may share InternalMIDI with as many people as you like, as long as the program is distributed with all parts, especially this documentation, intact. InternalMIDI may not be sold. You may freely distribute InternalMIDI together with your own software WITHOUT the authors permisson - although I would be glad to [hear from you](mailto:info@pecora.de)!  
+InternalMIDI is freeware. You may share InternalMIDI with as many people as you like, as long as the program is distributed with all parts, especially this documentation, intact. InternalMIDI may not be sold. You may freely distribute InternalMIDI together with your own software WITHOUT the authors permisson.
 
 All graphics, especially the icon or brands are copyrighted by the author and may not be used in any form without the author's consent.
 
@@ -107,20 +104,13 @@ If you want to change more settings remotely, please [contact me](#Autor)!
 *   **May 5th, 2001:** V 2.0 released: Added the settings window
 *   **April 28th, 2001:** Initial release
 
-# Future
-
-There will be some smaller updates for this release. InternalMIDI will be used in a bigger MIDI project I'm currently developing, called PecoBeat. Just [have a look at it](http://www.pecora.de/pecobeat)!<a name="Autor"></a>
-
 ## Author / contact
 
 I hope you like the program and you can benefit from it. I'm looking forward your ideas, suggestions or criticism!
-
-And please vote for it at [BeBits](http://www.bebits.com/app/2201)!
 
 Here you can contact me:
 
 <table>
 <tr><td>Werner Freytag</td></tr>
-<tr><td>Neurieder Str. 8<br>82152 Martinsried<br>Germany</td></tr>
 <tr><td><a href="mailto:info@pecora.de">info@pecora.de</a><br><a href="http://www.pecora.de">http://www.pecora.de</a></td></tr>
 </table>
