@@ -12,7 +12,8 @@ InternalMIDI is freeware. You may share InternalMIDI with as many people as you 
 All graphics, especially the icon or brands are copyrighted by the author and may not be used in any form without the author's consent.
 
 # Exclusion of liability
-Great care was taken to make sure InternalMIDI functions flawlessly and without fault. Nevertheless there is still a slim chance that errors may still occur.  
+Great care was taken to make sure InternalMIDI functions flawlessly and without fault. Nevertheless there is still a slim chance that errors may still occur.
+
 The author will not be held liable for any potential damage caused by this software nor will he guarantee any unique (or special) functions.
 
 # Usage of the program
@@ -86,10 +87,6 @@ msg.AddInt32( "be:value", 0 );
 
 You can also leave the whole line away, but this is not guaranteed to work in the future!
 
-### Even more features...?
-
-If you want to change more settings remotely, please [contact me](#Autor)!
-
 # History
 
 *   **July 26rd, 2001:** V 2.5.3: Added another view which shows the incoming "Note On" signals
@@ -104,13 +101,6 @@ If you want to change more settings remotely, please [contact me](#Autor)!
 *   **May 5th, 2001:** V 2.0 released: Added the settings window
 *   **April 28th, 2001:** Initial release
 
-## Author / contact
+## Author
 
-I hope you like the program and you can benefit from it. I'm looking forward your ideas, suggestions or criticism!
-
-Here you can contact me:
-
-<table>
-<tr><td>Werner Freytag</td></tr>
-<tr><td><a href="mailto:info@pecora.de">info@pecora.de</a><br><a href="http://www.pecora.de">http://www.pecora.de</a></td></tr>
-</table>
+InternalMIDI was originally written by Werner Freytag for the BeOS.
