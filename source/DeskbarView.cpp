@@ -149,7 +149,7 @@ void DeskbarView::PopUpMenu() {
 		
 		BMenuItem	*item;
 	
-		item = new BMenuItem(B_TRANSLATE("Settings..."), new BMessage('Sett'));
+		item = new BMenuItem(B_TRANSLATE("Settings"B_UTF8_ELLIPSIS), new BMessage('Sett'));
 		item->SetTarget( messenger );
 		fPopUpMenu->AddItem( item );
 
@@ -158,7 +158,7 @@ void DeskbarView::PopUpMenu() {
 		item->SetTarget( messenger );
 		fPopUpMenu->AddItem( item );
 
-		item = new BMenuItem(B_TRANSLATE("About..."), new BMessage( B_ABOUT_REQUESTED ));
+		item = new BMenuItem(B_TRANSLATE("About InternalMIDI"), new BMessage( B_ABOUT_REQUESTED ));
 		item->SetTarget( messenger );
 		fPopUpMenu->AddItem( item );
 	

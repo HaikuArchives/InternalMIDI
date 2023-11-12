@@ -10,6 +10,7 @@
 
 #include "SettingsWindow.h"
 
+#include <Catalog.h>
 #include <Control.h>
 #include <Deskbar.h>
 #include <MenuBar.h>
@@ -33,11 +34,14 @@
 #include "SignalView.h"
 #include "SettingsMainView.h"
 
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "SettingsWindow"
+
 const float HEIGHT = 410;
 const float WIDTH = 248;
 
 SettingsWindow::SettingsWindow()
-:	BWindow( BRect( 0, 0, WIDTH, HEIGHT ), "InternalMIDI Settings", B_TITLED_WINDOW,
+:	BWindow( BRect( 0, 0, WIDTH, HEIGHT ), B_TRANSLATE("InternalMIDI Settings"), B_TITLED_WINDOW,
 		B_ASYNCHRONOUS_CONTROLS|B_WILL_ACCEPT_FIRST_CLICK|B_NOT_RESIZABLE|B_NOT_ZOOMABLE )
 {
 	BDeskbar	deskbar;
@@ -73,21 +77,21 @@ SettingsWindow::SettingsWindow()
 	menuBar	= new BMenuBar( BRect(0, 0, 10000, 10), "menubar" );
 
 	// --- File ---
-	menu	= new BMenu( "File" );
+	menu	= new BMenu( B_TRANSLATE("File") );
 
-	menuItem = new BMenuItem( "Close window", new BMessage( B_QUIT_REQUESTED ), 'W' );
+	menuItem = new BMenuItem( B_TRANSLATE("Close window"), new BMessage( B_QUIT_REQUESTED ), 'W' );
 	menu->AddItem( menuItem );
 
 	menu->AddSeparatorItem();
 
-	menuItem = new BMenuItem( "Quit", new BMessage( 'Quit' ), 'Q' );
+	menuItem = new BMenuItem( B_TRANSLATE("Quit"), new BMessage( 'Quit' ), 'Q' );
 	menu->AddItem( menuItem );
 	
 	menuBar->AddItem( menu );
 
 	// --- Help ---
-	menu	= new BMenu( "?" );
-	menuItem = new BMenuItem( "About...", new BMessage( B_ABOUT_REQUESTED ), '?' );
+	menu	= new BMenu( B_TRANSLATE("Help") );
+	menuItem = new BMenuItem( B_TRANSLATE("About" B_UTF8_ELLIPSIS), new BMessage( B_ABOUT_REQUESTED ), '?' );
 	menu->AddItem( menuItem );
 	
 	menuBar->AddItem( menu );

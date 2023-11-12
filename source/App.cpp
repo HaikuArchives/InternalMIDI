@@ -160,12 +160,11 @@ void App::MessageReceived(BMessage *message) {
 }
 
 void App::AboutRequested() {
-	BAboutWindow* about = new BAboutWindow("InternalMIDI", APP_SIGNATURE);
+	BAboutWindow* about = new BAboutWindow(B_TRANSLATE_SYSTEM_NAME("InternalMIDI"), APP_SIGNATURE);
 	about->AddCopyright(2023,"Werner Freytag");
 	about->AddDescription(B_TRANSLATE("InternalMIDI creates a MIDI node for the internal Haiku General MIDI synthesizer.\n"
 	"Use a utility like PatchBay to connect it to your MIDI applications!\n\n"
-	"InternalMIDI is released under MIT license.\n\n"
-	"Project Homepage:\nhttp://dev.osdrawer.net/projects/internalmidi\n"));
+	"InternalMIDI is released under MIT license.\n\n"));
 	about->Show();
 }
 

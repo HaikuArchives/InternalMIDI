@@ -11,6 +11,7 @@
 #include <AppFileInfo.h>
 #include <Bitmap.h>
 #include <Button.h>
+#include <Catalog.h>
 #include <CheckBox.h>
 #include <Directory.h>
 #include <Entry.h>
@@ -31,6 +32,9 @@
 #include "ScopeView.h"
 #include "SettingsMainView.h"
 #include "SignalView.h"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "SettingsMainView"
 
 SettingsMainView::SettingsMainView( BRect bounds )
 :	BBox( bounds, NULL, B_FOLLOW_ALL ),
@@ -57,7 +61,7 @@ void SettingsMainView::AttachedToWindow() {
 
 	// Pause
 	BCheckBox	*checkbox = new BCheckBox( BRect( 0, 0, font.StringWidth("Pause") + 24, 12 ).OffsetByCopy( 50, 24 ),
-		"pause", "Pause", new BMessage('Paus') );
+		"pause", B_TRANSLATE("Pause"), new BMessage('Paus') );
 	if (prefs.fPause) checkbox->SetValue( 1 );
 	AddChild( checkbox );
 								
@@ -87,7 +91,7 @@ void SettingsMainView::AttachedToWindow() {
 	// ----------- 1. Box ------------------------------
 	bounds = BRect( Bounds().left + 10, 54, Bounds().right - 8, 146 );
 	box = new BBox( bounds, NULL, B_FOLLOW_ALL);
-	box->SetLabel( "Quality" );
+	box->SetLabel( B_TRANSLATE("Quality") );
 	AddChild( box );
 	
 	// patches
@@ -151,7 +155,7 @@ void SettingsMainView::AttachedToWindow() {
 	// ----------- 2. Box ------------------------------
 	bounds.top = bounds.bottom + 10; bounds.bottom = bounds.top + 74;
 	box = new BBox( bounds, NULL, B_FOLLOW_ALL);
-	box->SetLabel( "Volume" );
+	box->SetLabel( B_TRANSLATE("Volume") );
 	AddChild( box );
 
 	rgb_color dark_blue = { 0, 51, 102 };
@@ -171,7 +175,7 @@ void SettingsMainView::AttachedToWindow() {
 	// ----------- 3. Box ------------------------------
 	bounds.top = bounds.bottom + 10; bounds.bottom = bounds.top + 132;
 	box = new BBox( bounds, NULL, B_FOLLOW_ALL);
-	box->SetLabel( "Special" );
+	box->SetLabel( B_TRANSLATE("Special") );
 	AddChild( box );
 
 	frame = BRect( 10, 18, bounds.right - 21, 22 );
@@ -200,7 +204,7 @@ void SettingsMainView::AttachedToWindow() {
 	// Quit, Show Replicant
 	bounds.left += 12;
 	bounds.top = bounds.bottom + 10; bounds.bottom = bounds.top + 16;
-	checkbox = new BCheckBox( bounds, "showreplicant", "Show replicant in Deskbar", new BMessage('Repl') );
+	checkbox = new BCheckBox( bounds, "showreplicant", B_TRANSLATE("Show replicant in Deskbar"), new BMessage('Repl') );
 	checkbox->SetValue( prefs.fShowReplicant );
 	AddChild( checkbox );
 	
@@ -231,8 +235,8 @@ void SettingsMainView::Draw( BRect updateRect ) {
 	DrawBitmap( fIcon, BPoint( 10, 16 ) );
 	
 	MovePenTo( Bounds().right - 75, Bounds().top + 50 );
-	DrawString("Signal");
+	DrawString(B_TRANSLATE("Signal"));
 	
 	MovePenTo( Bounds().right - 52, Bounds().top + 50 );
-	DrawString("Output");
+	DrawString( B_TRANSLATE("Output"));
 }
