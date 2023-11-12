@@ -108,7 +108,7 @@ void SettingsMainView::AttachedToWindow() {
 		menu->AddItem( menuItem );
 	}
 
-	menuField = new BMenuField( frame, "patches", "Synthesizer patches", menu, B_FOLLOW_ALL);
+	menuField = new BMenuField( frame, "patches", B_TRANSLATE( "Synthesizer patches" ), menu, B_FOLLOW_ALL);
 	menuField->SetDivider( divider );
 	box->AddChild( menuField );
 
@@ -118,7 +118,7 @@ void SettingsMainView::AttachedToWindow() {
 	frame.OffsetBy(0, 25 );
 	menu = new BPopUpMenu("please select");
 	
-	for (int i=0; i < sizeof(rate_array) / sizeof(int32); ++i ) {
+	for ( uint32 i=0; i < sizeof(rate_array) / sizeof(int32); ++i ) {
 		BMessage	*message = new BMessage('Rate');
 		message->AddInt32("rate", rate_array[i]);
 		BString menu_title;
@@ -128,17 +128,17 @@ void SettingsMainView::AttachedToWindow() {
 		menu->AddItem( menuItem );
 	}
 
-	menuField = new BMenuField( frame, "rates", "Sampling rate", menu, B_FOLLOW_ALL );
+	menuField = new BMenuField( frame, "rates", B_TRANSLATE( "Sampling rate" ), menu, B_FOLLOW_ALL );
 	menuField->SetDivider( divider );
 	box->AddChild( menuField );
 
 	// interpolation
-	const char *interpolations[] = { "Drop sample", "2 point interpolation", "Linear interpolation" };
+	const char *interpolations[] = { B_TRANSLATE( "Drop sample" ), B_TRANSLATE( "2 point interpolation" ), B_TRANSLATE( "Linear interpolation" ) };
 	
 	frame.OffsetBy(0, 25 );
 	menu = new BPopUpMenu("please select");
 	
-	for (int i=0; i < sizeof(interpolations) / sizeof(const char*); ++i ) {
+	for ( uint32 i=0; i < sizeof(interpolations) / sizeof(const char*); ++i ) {
 		BMessage	*message = new BMessage('Inte');
 		message->AddInt32("interpolation", i);
 		BString menu_title;
@@ -148,7 +148,7 @@ void SettingsMainView::AttachedToWindow() {
 		menu->AddItem( menuItem );
 	}
 
-	menuField = new BMenuField( frame, "interpolation", "Interpolation", menu, B_FOLLOW_ALL );
+	menuField = new BMenuField( frame, "interpolation", B_TRANSLATE( "Interpolation" ), menu, B_FOLLOW_ALL );
 	menuField->SetDivider( divider );
 	box->AddChild( menuField );
 	
@@ -162,7 +162,7 @@ void SettingsMainView::AttachedToWindow() {
 
 	frame = BRect( 10, 18, bounds.right - 21, 22 );
 
-	slider = new RealtimeSlider(frame, "gain", "Gain", new BMessage('Gain'), 0, 500, B_TRIANGLE_THUMB, B_FOLLOW_LEFT_RIGHT );
+	slider = new RealtimeSlider(frame, "gain", B_TRANSLATE( "Gain" ), new BMessage('Gain'), 0, 500, B_TRIANGLE_THUMB, B_FOLLOW_LEFT_RIGHT );
 	slider->SetBarColor( dark_blue ); 
 	slider->SetHashMarks(B_HASH_MARKS_BOTTOM);
 	slider->SetHashMarkCount(6);
@@ -175,12 +175,12 @@ void SettingsMainView::AttachedToWindow() {
 	// ----------- 3. Box ------------------------------
 	bounds.top = bounds.bottom + 10; bounds.bottom = bounds.top + 132;
 	box = new BBox( bounds, NULL, B_FOLLOW_ALL);
-	box->SetLabel( B_TRANSLATE("Special") );
+	box->SetLabel( B_TRANSLATE( "Special" ) );
 	AddChild( box );
 
 	frame = BRect( 10, 18, bounds.right - 21, 22 );
 
-	slider = new RealtimeSlider(frame, "reverb", "Reverb", new BMessage('Reve'), (int)B_REVERB_NONE, (int)B_REVERB_DUNGEON, B_TRIANGLE_THUMB, B_FOLLOW_LEFT_RIGHT );
+	slider = new RealtimeSlider(frame, "reverb", B_TRANSLATE( "Reverb" ), new BMessage('Reve'), (int)B_REVERB_NONE, (int)B_REVERB_DUNGEON, B_TRIANGLE_THUMB, B_FOLLOW_LEFT_RIGHT );
 	slider->SetBarColor( dark_blue ); 
 	slider->SetHashMarks(B_HASH_MARKS_BOTTOM);
 	slider->SetHashMarkCount((int)B_REVERB_DUNGEON - (int)B_REVERB_NONE + 1);
@@ -191,7 +191,7 @@ void SettingsMainView::AttachedToWindow() {
 	box->AddChild( slider );
 
 	frame.OffsetBy ( 0, 58 );
-	slider = new RealtimeSlider(frame, "transposition", "Transposition", new BMessage('Tran'), -12, +12, B_TRIANGLE_THUMB, B_FOLLOW_LEFT_RIGHT );
+	slider = new RealtimeSlider(frame, "transposition", B_TRANSLATE( "Transposition" ), new BMessage('Tran'), -12, +12, B_TRIANGLE_THUMB, B_FOLLOW_LEFT_RIGHT );
 	slider->SetBarColor( dark_blue ); 
 	slider->SetHashMarks(B_HASH_MARKS_BOTTOM);
 	slider->SetHashMarkCount(13);
@@ -235,8 +235,8 @@ void SettingsMainView::Draw( BRect updateRect ) {
 	DrawBitmap( fIcon, BPoint( 10, 16 ) );
 	
 	MovePenTo( Bounds().right - 75, Bounds().top + 50 );
-	DrawString(B_TRANSLATE("Signal"));
+	DrawString(B_TRANSLATE( "Signal" ));
 	
 	MovePenTo( Bounds().right - 52, Bounds().top + 50 );
-	DrawString( B_TRANSLATE("Output"));
+	DrawString( B_TRANSLATE( "Output" ));
 }

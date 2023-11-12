@@ -14,6 +14,7 @@
 #include <AppFileInfo.h>
 #include <Application.h>
 #include <Bitmap.h>
+#include <Catalog.h>
 #include <Message.h>
 #include <Midi.h>
 #include <MidiSynth.h>
@@ -29,6 +30,9 @@
 #include "Prefs.h"
 
 /* -------------- InternalMidi ------------------------------- */
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "InternalMidi"
 
 InternalMidi::InternalMidi()
 :	BMidiLocalConsumer("InternalMIDI"),
@@ -217,7 +221,7 @@ void StatusView::Draw(BRect updateRect) {
 	SetLowColor( 255, 255, 255, 128 );
 	SetHighColor( 0, 0, 0, 255 );
 
-	DrawString("Loading patches...", BPoint( 70.0, 25.0));
+	DrawString(B_TRANSLATE("Loading patches..."), BPoint( 70.0, 25.0));
 };
 
 StatusView::~StatusView() {
