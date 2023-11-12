@@ -134,7 +134,7 @@ void SettingsMainView::AttachedToWindow() {
 	frame.OffsetBy(0, 25 );
 	menu = new BPopUpMenu("please select");
 	
-	for (int i=0; i < sizeof(interpolations) / sizeof(int32); ++i ) {
+	for (int i=0; i < sizeof(interpolations) / sizeof(const char*); ++i ) {
 		BMessage	*message = new BMessage('Inte');
 		message->AddInt32("interpolation", i);
 		BString menu_title;

@@ -9,6 +9,7 @@
  */
 
 #include <Alert.h>
+#include <Catalog.h>
 #include <Control.h>
 #include <Deskbar.h>
 #include <Entry.h>
@@ -18,6 +19,8 @@
 #include <Path.h>
 #include <Window.h>
 
+#include <private/interface/AboutWindow.h>
+
 #include <iostream>
 
 #include "App.h"
@@ -25,6 +28,9 @@
 #include "Prefs.h"
 #include "InternalMidi.h"
 #include "SettingsWindow.h"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "App"
 
 App::App()
 :	BApplication( APP_SIGNATURE ),
@@ -154,15 +160,13 @@ void App::MessageReceived(BMessage *message) {
 }
 
 void App::AboutRequested() {
-	(new BAlert("About InternalMIDI", 
-		"\nInternalMIDI V2.5.3\n\n"
-		"Copyright ©2001 by Werner Freytag\n\n"
-//		"Copyright ©2009/2010 Haiku Inc. \n\n"
-		"InternalMIDI creates a MIDI node for the internal Haiku General MIDI synthesizer.\n"
-		"Use a utility like PatchBay to connect it to your MIDI applications!\n\n"
-		"InternalMIDI is released under MIT license.\n\n"
-		"Project Homepage:\nhttp://dev.osdrawer.net/projects/internalmidi\n", "OK", NULL, NULL, 
-		B_WIDTH_FROM_WIDEST, B_EVEN_SPACING, B_INFO_ALERT))->Go();
+	BAboutWindow* about = new BAboutWindow("InternalMIDI", APP_SIGNATURE);
+	about->AddCopyright(2023,"Werner Freytag");
+	about->AddDescription(B_TRANSLATE("InternalMIDI creates a MIDI node for the internal Haiku General MIDI synthesizer.\n"
+	"Use a utility like PatchBay to connect it to your MIDI applications!\n\n"
+	"InternalMIDI is released under MIT license.\n\n"
+	"Project Homepage:\nhttp://dev.osdrawer.net/projects/internalmidi\n"));
+	about->Show();
 }
 
 App::~App() {
