@@ -10,6 +10,7 @@
 
 #include <AppFileInfo.h>
 #include <Bitmap.h>
+#include <Catalog.h>
 #include <Deskbar.h>
 #include <Entry.h>
 #include <Message.h>
@@ -29,6 +30,9 @@
 #include "DeskbarView.h"
 #include "InternalMidi.h"
 #include "Prefs.h"
+
+#undef B_TRANSLATION_CONTEXT
+#define B_TRANSLATION_CONTEXT "DeskbarView"
 
 extern "C" _EXPORT BView *instantiate_deskbar_item();
 
@@ -145,22 +149,22 @@ void DeskbarView::PopUpMenu() {
 		
 		BMenuItem	*item;
 	
-		item = new BMenuItem("Settings...", new BMessage('Sett'));
+		item = new BMenuItem(B_TRANSLATE("Settings"B_UTF8_ELLIPSIS), new BMessage('Sett'));
 		item->SetTarget( messenger );
 		fPopUpMenu->AddItem( item );
 
-		item = new BMenuItem("Show this replicant", new BMessage('Repl'));
+		item = new BMenuItem(B_TRANSLATE("Show this replicant"), new BMessage('Repl'));
 		item->SetMarked( true );
 		item->SetTarget( messenger );
 		fPopUpMenu->AddItem( item );
 
-		item = new BMenuItem("About...", new BMessage( B_ABOUT_REQUESTED ));
+		item = new BMenuItem(B_TRANSLATE("About InternalMIDI"), new BMessage( B_ABOUT_REQUESTED ));
 		item->SetTarget( messenger );
 		fPopUpMenu->AddItem( item );
 	
 		fPopUpMenu->AddSeparatorItem();
 	
-		item = new BMenuItem("Quit", new BMessage( B_QUIT_REQUESTED ));
+		item = new BMenuItem(B_TRANSLATE("Quit"), new BMessage( B_QUIT_REQUESTED ));
 		item->SetTarget( messenger );
 		fPopUpMenu->AddItem( item );
 	}
@@ -233,7 +237,7 @@ void DeskbarView::AddToDeskbar() {
 	be_roster->FindApp( APP_SIGNATURE, &ref);
 	status_t err = deskbar.AddItem(&ref);
 	if (err != B_OK)
-		cerr << "Error while creating deskbar replicant: " << strerror(err) << endl;
+		std::cerr << "Error while creating deskbar replicant: " << strerror(err) << std::endl;
 }
 
 void DeskbarView::RemoveFromDeskbar() {
